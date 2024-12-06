@@ -5,6 +5,10 @@ describe("Parser con Peggy", () => {
     // PRUEBA PREDETERMINADA PARA PRObAR
     it("Prueba predeterminada sin entrada especifica", () => {
         //const result = Parser.parse(input);
-        const result = Parser.parse(" 987 ");
+        let Entrada: string = `
+            hola = "sa" 
+        `;
+
+        const result = Parser.parse(Entrada);
     });
 });
