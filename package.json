@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "peggy": "peggy --plugin ./node_modules/ts-pegjs/dist/tspegjs.js -o src/parser/fortranpeg.ts --cache src/parser/fortranpeg.pegjs"
+    "peggy": "peggy --plugin ./node_modules/ts-pegjs/dist/tspegjs.js -o parser/fortranpeg.ts --cache parser/fortranpeg.pegjs"
   },
   "dependencies": {
     "react": "^18.3.1",
