@@ -6,7 +6,7 @@ describe("Parser con Peggy", () => {
     it("Prueba predeterminada sin entrada especifica", () => {
         //const result = Parser.parse(input);
         let Entrada: string = `
-            hola = "sa" 
+            hola = "sa' 
         `;
 
         const result = Parser.parse(Entrada);
