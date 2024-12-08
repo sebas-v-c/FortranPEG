@@ -22,6 +22,7 @@ unarias
   / regla3* / (regla4?)*;
          `;
 
+        // @ts-ignore
         const result = Parser.parse(Entrada);
     });
 
