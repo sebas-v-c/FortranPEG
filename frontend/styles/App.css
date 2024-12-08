@@ -1,0 +1,55 @@
+/* Contenedor principal */
+body {
+  margin: 0; /* Elimina el margen predeterminado del body */
+  padding: 0; /* Elimina el padding predeterminado del body */
+}
+
+h1{
+
+  margin-top: 0;
+}
+
+
+
+.container {
+ 
+
+  height: 81.9vh;
+  display: flex; /* Convierte el contenedor en un contenedor flexbox */
+  flex-direction: row; /* Organiza los elementos en una fila (de izquierda a derecha) */
+  align-items: flex-start; /* Alinea los elementos al inicio (top) verticalmente */
+  justify-content: center; /* Centra los elementos horizontalmente dentro del contenedor */
+  gap: 20px; /* Espacio uniforme entre los componentes */
+  padding-top: 30px; /* Espacio alrededor del contenedor */
+
+}
+
+
+  
+  /* Estilo del botón */
+  .add-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .add-button:hover {
+    background-color: #0056b3;
+  }
+
+  .div_principal{
+
+    background-color: rgb(144, 133, 241); /* Fondo del contenedor */
+    padding-top: 2%;
+    padding-left: 2%;
+  }
+  
+  
+
+
+ 
