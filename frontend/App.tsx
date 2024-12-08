@@ -1,27 +1,29 @@
 import { useState } from "react";
 import AreaTexto from "./sections/AreaTexto";
 import Respuesta from "./sections/Respuesta";
+import * as Parser from "../parser/fortranpeg";
 import "./styles/App.css"
 
 
 function App() {
 
   const [texto,setTexto]=useState <string> ("");
+  const [color, setColor] = useState("black");
 
   function manejoTexto (value:string) {
-    setTexto(value);
-
-  }
-
-  
-    const [color, setColor] = useState("black");
-  
-
-    function cambiarColor() {
-      // Cambia el color del texto basándote en una condición
-      setColor(color === "black" ? "red" : "black");
+    try {
+      const parser = Parser.parse(value);
+      setColor("black");
+      setTexto("Gramática aceptada correctamente")
+    } catch(err){
+      if (err instanceof Parser.PeggySyntaxError){
+        setColor("red")
+        setTexto("Se ha encontrado un error en la gramática:\n" + err.message);
+      } else {
+        console.error("an unexpected error ocurred: ", err);
+      }
     }
-
+  }
 
   return (
       
@@ -35,7 +37,7 @@ function App() {
 
       
 
-      <Respuesta respuestaContenido={texto} /> 
+      <Respuesta respuestaContenido={texto} color={color} /> 
 
 
 

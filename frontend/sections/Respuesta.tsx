@@ -3,14 +3,12 @@ import "../styles/Respuesta.css"
 
 
 type props ={
-
     respuestaContenido :string 
-
-
+    color: string
 
 }
 
-function Respuesta ({ respuestaContenido }:props) { 
+function Respuesta ({ respuestaContenido, color }:props) { 
 
 
 
@@ -19,7 +17,7 @@ function Respuesta ({ respuestaContenido }:props) {
     <div className="Respuesta-Area">
       <textarea
         value={respuestaContenido } 
-
+        style={{ color: color }}
         readOnly 
         className="Text_Area"
       />
