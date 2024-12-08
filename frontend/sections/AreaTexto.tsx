@@ -1,5 +1,5 @@
 
-import React, { useState } from "react"; // Importamos React y el hook useState
+import { useState } from "react"; // Importamos React y el hook useState
 import CodeMirror from "@uiw/react-codemirror"; // Importamos CodeMirror
 import { javascript } from "@codemirror/lang-javascript"; // Soporte para sintaxis JavaScript
 import { oneDark } from "@codemirror/theme-one-dark"; // Tema oscuro

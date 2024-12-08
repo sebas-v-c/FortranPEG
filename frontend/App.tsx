@@ -12,6 +12,7 @@ function App() {
 
   function manejoTexto (value:string) {
     try {
+      // @ts-ignore
       const parser = Parser.parse(value);
       setColor("black");
       setTexto("Gramática aceptada correctamente")
