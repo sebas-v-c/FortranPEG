@@ -1,0 +1,52 @@
+name: Deploy to Github Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_site:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+      
+      - name: install dependencies
+        run: npm install
+
+      - name: build react app
+        env: 
+          BASE_PATH: '/${{ github.event.repository.name }}'
+        run: npm run build
+
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build_site
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment: 
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy
+        id: deploy
+        uses: actions/deploy-page@v4
+
+
+
+    
