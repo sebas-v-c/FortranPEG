@@ -12,6 +12,8 @@
     "test": "npm run peggy && vitest"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@uiw/react-codemirror": "^4.23.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "ts-pegjs": "^4.2.1"
