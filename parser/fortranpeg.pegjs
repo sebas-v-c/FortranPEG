@@ -28,7 +28,7 @@ Literales
 
 caracteres = caracter (_ caracter)*
 
-caracter =  [a-zA-Z0-9_]* _ "-" _ [a-zA-Z0-9_]*
-            / [a-zA-Z0-9_] 
+caracter =   [^[\]-]* _ "-" _  [^[\]-]*
+          /  [^[\]]
 
 _ = [ \t\n\r]* // espacios en blanco posible
