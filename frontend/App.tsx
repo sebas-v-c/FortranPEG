@@ -28,7 +28,10 @@ function App() {
 
   return (
       
-    <div className="div_principal"> <h1>FortranPEG</h1>
+    <div className="div_principal"> 
+
+    <div className="fondo_titulo"><h1>FortranPEG</h1></div>
+    
     
     <div className="container">
      
