@@ -11,18 +11,18 @@ h1 {
 }
 
 .container {
-  height: 83.5vh; /* Altura relativa al viewport */
+  height: 83.5vh; 
   display: flex;
-  flex-direction: row; /* Coloca los elementos en fila */
-  align-items: flex-start; /* Alinea los elementos al inicio (top) verticalmente */
-  justify-content: center; /* Centra los elementos horizontalmente */
-  gap: 20px; /* Espacio uniforme entre los elementos */
-  padding: 30px; /* Espacio interno adicional */
-  box-sizing: border-box; /* Incluye el padding en las dimensiones totales */
-  flex-wrap: wrap; /* Permite que los elementos se ajusten a nuevas líneas en pantallas pequeñas */
+  flex-direction: row; 
+  align-items: flex-start; 
+  justify-content: center; 
+  gap: 20px; 
+  padding: 30px; 
+  box-sizing: border-box;
+  flex-wrap: wrap; 
 }
 
-/* Estilo del botón */
+
 .add-button {
   margin-top: 10px;
   padding: 10px 20px;
@@ -38,41 +38,40 @@ h1 {
   background-color: #0056b3;
 }
 
-/* Div principal */
+
 .div_principal {
-  background-color: rgb(144, 133, 241); /* Fondo del contenedor */
-  padding: 2%; /* Espaciado interno */
+  background-color: rgb(144, 133, 241); 
+  padding: 2%; 
   color: purple;
-  width: 100%; /* Ocupa todo el ancho disponible */
-  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+  width: 100%;
+  box-sizing: border-box; 
 }
 
-/* Fondo del título */
 .fondo_titulo {
   background-color: white;
-  max-width: 200px; /* Ancho máximo del título */
+  max-width: 200px; 
   max-height: 50px;
-  width: 100%; /* Se ajusta dinámicamente al tamaño del contenedor */
-  text-align: center; /* Centra el texto dentro del div */
+  width: 100%;
+  text-align: center; 
   padding: 10px;
-  box-sizing: border-box; /* Incluye el padding dentro del tamaño */
+  box-sizing: border-box; 
 }
 
 /* Adaptaciones para pantallas pequeñas */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
-    align-items: center; /* Centra los elementos horizontalmente */
-    padding: 20px; /* Ajusta el espaciado interno */
+    flex-direction: column;
+    align-items: center; 
+    padding: 20px; 
   }
 
   .div_principal {
-    padding: 5%; /* Más espacio en pantallas pequeñas */
+    padding: 5%;
   }
 
   .fondo_titulo {
-    width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
-    max-width: none; /* Elimina el límite del ancho */
+    width: 100%;
+    max-width: none; 
   }
 }
 
