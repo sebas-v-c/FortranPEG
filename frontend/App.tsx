@@ -8,13 +8,13 @@ import "./styles/App.css"
 function App() {
 
   const [texto,setTexto]=useState <string> ("");
-  const [color, setColor] = useState("black");
+  const [color, setColor] = useState("white");
 
   function manejoTexto (value:string) {
     try {
       // @ts-ignore
       const parser = Parser.parse(value);
-      setColor("black");
+      setColor("white");
       setTexto("Gramática aceptada correctamente")
     } catch(err){
       if (err instanceof Parser.PeggySyntaxError){
