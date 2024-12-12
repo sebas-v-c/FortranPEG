@@ -1,0 +1,66 @@
+// Archivo de prueba extendido para parser basado en PeggyJS
+
+// Regla simple con secuencia de literales y etiquetas
+reglaSimple "Regla simple"
+  = "hola" "mundo" etiqueta:"parser"
+  / "ejemplo" |2..5, ","|
+  ;
+
+// Regla con alternativas y subexpresiones
+alternativas
+  = "foo" / "bar" / ("baz" / "qux")+
+  ;
+
+// Regla con aserciones positivas y negativas
+aserciones
+  = &"inicio" "contenido" !"fin"
+  ;
+
+// Regla con pluck (@) y etiquetas
+pluckYEtiqueta
+  = @etiqueta:"valor" @("a" / "b" / "c")+
+  ;
+
+// Reglas con repeticiones específicas y delimitadores
+repeticiones
+  = ("a" "b")|1..3, "-"|
+  / "c"|.., ";"|
+  / ("x" / "y")|4.., "."|
+  ;
+
+// Uso de conteos definidos por variables
+conteos
+  = cantidad:int "cadena"|cantidad|
+  / cantidad:int "cadena2"|0..cantidad|
+  / cantidad:int "cadena3"|cantidad, ","|
+  ;
+
+// Expresiones más complejas con etiquetas y delimitadores
+expresionCompleja
+  = primerGrupo:("uno" / "dos") "-" segundoGrupo:("tres" / "cuatro")
+  / opcion1:$("abc")|1..3, ","| "opcion2"!
+  ;
+
+// Regla que reconoce cualquier carácter
+caracteres "Reconoce cualquier carácter"
+  = .+ !.
+  ;
+
+// Espacios en blanco y enteros
+_ "Espacios en blanco"
+  = [ \t\r\n]*
+
+int "Número entero"
+  = [0-9]+
+
+// Regla que mezcla todos los elementos
+combinada
+  = inicio:&"start" cuerpo:("foo"|"bar")+ fin:!"end"
+  / elementos:("uno" | "dos" | "tres")|..2, "|"|
+  ;
+
+// Ejemplo completo con múltiples niveles de anidación
+anidada
+  = "nivel1" ("nivel2" ("nivel3" "nivel4")?) "final"
+  / otraAlternativa:$("a" / "b" / "c")+
+  ;

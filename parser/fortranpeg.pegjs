@@ -1,29 +1,44 @@
-// peggy no reconoce espacios en blanco
-Inicio = Reglas 
+Inicio = Instruccion+ __
 
 // Reglas PEG      
-Reglas = Regla (_ Regla)*
-Regla = _ Identificador _ "=" _ Eleccion _ ";" _
-
+//Instrucciones = Instruccion (_ Instruccion)*
+Instruccion = __ Identificador __ Literales? __ "=" _ Eleccion __ (";")?  // Regla     
+          / Comentarios
 Eleccion
-  = Concatenacion (_ "/" _ Concatenacion)*
+  = Concatenacion (__ "/" __ Concatenacion)*
 
-Concatenacion = Symbol_Expresion (_ Symbol_Expresion)*
+Concatenacion
+  = pluck (_ pluck)*
+
+pluck
+  = "@"? _ etiqueta
+
+etiqueta
+  = (Identificador _ ":")? _ Symbol_Expresion
+
+Symbol_Expresion  = ("$"/"&"/"!")? _ Expresiones _ contador? // Puedem estar o no estar las expresiones ?, + o *
+
+contador
+  = [?+*]
+  / "|" _ (numero /Identificador) _ "|"
+  / "|" _ (numero /Identificador)? _ ".." _ (numero /Identificador)? _ "|" 
+  / "|" _ (numero /Identificador)? _ "," _ Eleccion _ "|"
+  / "|" _ (numero /Identificador)? _ ".." _ (numero /Identificador)? _ "," _ Eleccion _ "|"
+
+
 // Expresiones
-
-Symbol_Expresion  = Expresiones [?+*]? // Puedem estar o no estar las expresiones ?, + o *
-
-Expresiones = Literales
-            / "[" _ caracteres _ "]"
+Expresiones = Literales "i"?
+            / "[" _ caracteres _ "]" "i"?
             / Identificador   // regla
-            /"(" _ Eleccion _ ")" // subexpresion
+            / "(" _ Eleccion _ ")" // subexpresion
+            / "."
+            / "!."
 
-// Expresiones regulares, $ Indica que se captura el texto coincidente como un valor.
 Identificador
   = $([a-zA-Z_] [a-zA-Z0-9_]*) 
 
 Literales 
-   =  ["] [^"]* ["]
+   =  ["] [^"]* ["] 
     / ['] [^']* ['] 
 
 caracteres = caracter (_ caracter)*
@@ -31,4 +46,16 @@ caracteres = caracter (_ caracter)*
 caracter =   [^[\]-]* _ "-" _  [^[\]-]*
           /  [^[\]]
 
-_ = [ \t\n\r]* // espacios en blanco posible
+
+Comentarios "Comentario"
+= "//" (.)* [\n]?
+/ "/" (.) "*/"
+
+numero
+  = [0-9]+
+
+_ "espacios en blanco"
+  = [ \t]* // espacios en blanco posible
+
+__ "nueva linea"
+  = [ \t\n\r]*
