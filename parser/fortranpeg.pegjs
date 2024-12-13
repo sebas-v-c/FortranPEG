@@ -2,7 +2,7 @@ Inicio = Instruccion+ _
 
 // Reglas PEG      
 //Instrucciones = Instruccion (_ Instruccion)*
-Instruccion = _ Identificador _ Literales? _ "=" _ Eleccion _ (_ ";")?  // Regla     
+Instruccion = _ Identificador _ Literales? _ "=" _ Eleccion (_";")?  // Regla     
           / Comentarios
 
 Eleccion
