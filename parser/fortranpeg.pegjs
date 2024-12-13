@@ -1,14 +1,15 @@
-Inicio = Instruccion+ __
+Inicio = Instruccion+ _
 
 // Reglas PEG      
 //Instrucciones = Instruccion (_ Instruccion)*
-Instruccion = __ Identificador __ Literales? __ "=" _ Eleccion __ (";")?  // Regla     
+Instruccion = _ Identificador _ Literales? _ "=" _ Eleccion _ (_ ";")?  // Regla     
           / Comentarios
+
 Eleccion
-  = Concatenacion (__ "/" __ Concatenacion)*
+  = Concatenacion (_ "/" _ Concatenacion)*
 
 Concatenacion
-  = pluck (_ pluck)*
+  = pluck (_ pluck !(_ Literales? _ "="))*
 
 pluck
   = "@"? _ etiqueta
@@ -35,7 +36,7 @@ Expresiones = Literales "i"?
             / "!."
 
 Identificador
-  = $([a-zA-Z_] [a-zA-Z0-9_]*) 
+  = [a-zA-Z_]i[a-zA-Z0-9_]i*
 
 Literales 
    =  ["] [^"]* ["] 
@@ -54,8 +55,5 @@ Comentarios "Comentario"
 numero
   = [0-9]+
 
-_ "espacios en blanco"
-  = [ \t]* // espacios en blanco posible
-
-__ "nueva linea"
+_ "Espacios en Blanco"
   = [ \t\n\r]*

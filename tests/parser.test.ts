@@ -9,9 +9,11 @@ describe("Parser con Peggy", () => {
         //const result = Parser.parse(input);
         let Entrada: string = `
 subexpresion
-  = "hola, " ("que tal?" / "como estas?" / 'y adios.')
-
-conjuntos
+  = "hola, " (
+  "que tal?" / 
+  "como estas?" 
+  / 'y adios.'
+  ) conjuntos
   = [abc]
   / [a-z0-9]
   / [abc0-9ghiA-Z]
